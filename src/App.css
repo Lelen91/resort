@@ -156,15 +156,15 @@ h6 {
 }
 /* end of navbar */
 /* Hero */
-.defaultHero,
-.roomsHero {
+.default-hero,
+.rooms-hero {
   min-height: calc(100vh - 66px);
   background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.roomsHero {
+.rooms-hero {
   background-image: url("./images/room-2.jpeg");
   min-height: 60vh;
 }

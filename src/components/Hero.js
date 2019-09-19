@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export default function Hero({ children, className }) {
-  return (
-    <header className={className}>
-      {children}
-    </header>
-  )
-} 
+const Hero = ({ children, className }) => {
+  return <header className={className}>{children}</header>;
+};
 
 Hero.defaultProps = {
-  className: 'defaultHero'
-}
+  className: "default-hero"
+};
+
+export default Hero;
