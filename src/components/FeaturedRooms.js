@@ -11,7 +11,7 @@ export default class FeaturedRooms extends Component {
     rooms = rooms.map(room => {
       return <Room key={room.id} room={room} />;
     });
-    console.log("TCL: FeaturedRooms -> render -> rooms", rooms);
+
     return (
       <section className='featured-rooms'>
         <Title title='Featured Rooms' />

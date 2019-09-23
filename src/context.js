@@ -3,8 +3,6 @@ import items from "./data";
 
 // Provider
 const RoomContext = React.createContext();
-// Consumer
-const RoomConsumer = RoomContext.Consumer;
 
 class RoomProvider extends Component {
   state = {
@@ -30,23 +28,25 @@ class RoomProvider extends Component {
       let id = item.sys.id;
       let images = item.fields.images.map(image => image.fields.file.url);
       let room = { ...item.fields, images, id };
+
       return room;
     });
     return tempItems;
   }
 
-  getRoom(slug) {
+  getRoom = slug => {
     let tempRooms = [...this.state.rooms];
     const room = tempRooms.find(room => room.slug === slug);
+
     return room;
-  }
+  };
 
   render() {
     return (
       <RoomContext.Provider
         value={{
           ...this.state,
-          getRoom: this.getRoom()
+          getRoom: this.getRoom
         }}
       >
         {this.props.children}
@@ -54,5 +54,8 @@ class RoomProvider extends Component {
     );
   }
 }
+
+// Consumer
+const RoomConsumer = RoomContext.Consumer;
 
 export { RoomContext, RoomProvider, RoomConsumer };

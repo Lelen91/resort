@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
 import Hero from "../components/Hero";
 import Banner from "../components/Banner";
+import StyledHero from "../components/StyledHero";
 import defaultBcg from "../images/room-1.jpeg";
 
 export default class SingleRoom extends Component {
@@ -21,6 +22,7 @@ export default class SingleRoom extends Component {
   render() {
     const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
+
     if (!room) {
       return (
         <div className='error'>
@@ -31,6 +33,7 @@ export default class SingleRoom extends Component {
         </div>
       );
     }
+
     const {
       name,
       description,
@@ -44,13 +47,22 @@ export default class SingleRoom extends Component {
     } = room;
 
     return (
-      <Hero className='rooms-hero'>
-        <Banner title={`${name} Room`}>
-          <Link to='/rooms' className='btn-primary'>
-            Back to rooms
-          </Link>
-        </Banner>
-      </Hero>
+      <React.Fragment>
+        <StyledHero img={images[0] || this.state.defaultBcg}>
+          <Banner title={`${name} Room`}>
+            <Link to='/rooms' className='btn-primary'>
+              Back to Rooms
+            </Link>
+          </Banner>
+        </StyledHero>
+        <section className='single-room'>
+          <div className='single-room-images'>
+            {images.map((item, index) => {
+              return <img key={index} src={item} alt={name} />;
+            })}
+          </div>
+        </section>
+      </React.Fragment>
     );
   }
 }
