@@ -17,7 +17,7 @@ export default class SingleRoom extends Component {
 
   static contextType = RoomContext;
 
-  // componentDidMount() {}
+  componentDidMount() {}
 
   render() {
     const { getRoom } = this.context;
@@ -46,9 +46,10 @@ export default class SingleRoom extends Component {
       images
     } = room;
 
+    const [mainImg, ...defaultImages] = images;
     return (
       <React.Fragment>
-        <StyledHero img={images[0] || this.state.defaultBcg}>
+        <StyledHero img={mainImg || this.state.defaultBcg}>
           <Banner title={`${name} Room`}>
             <Link to='/rooms' className='btn-primary'>
               Back to Rooms
@@ -57,10 +58,35 @@ export default class SingleRoom extends Component {
         </StyledHero>
         <section className='single-room'>
           <div className='single-room-images'>
-            {images.map((item, index) => {
+            {defaultImages.map((item, index) => {
               return <img key={index} src={item} alt={name} />;
             })}
           </div>
+          <div className='single-room-info'>
+            <article className='desc'>
+              <h3>Details</h3>
+              <p>{description}</p>
+            </article>
+            <article className='info'>
+              <h3>Info</h3>
+              <h6>Price: £{price}</h6>
+              <h6>Size: {size} SQFT</h6>
+              <h6>
+                Max Capacity:{" "}
+                {capacity > 1 ? `${capacity} people` : `${capacity} person`}
+              </h6>
+              <h6>Pets: {pets ? "Allowed" : "Not allowed"}</h6>
+              <h6>Breakfast: {breakfast ? "Included" : "Not included"}</h6>
+            </article>
+          </div>
+        </section>
+        <section className='room-extras'>
+          <h6>Extras</h6>
+          <ul className='extras'>
+            {extras.map((item, index) => {
+              return <li key={index}>- {item}</li>;
+            })}
+          </ul>
         </section>
       </React.Fragment>
     );
