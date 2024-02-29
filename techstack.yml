@@ -2,7 +2,7 @@ repo_name: Lelen91/resort
 report_id: 7c903082bc9ab2c2f9a328ed5119f359
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:13:18+00:00'
+timestamp: '2024-02-29T19:21:09+00:00'
 requested_by: Lelen91
 provider: github
 branch: master
@@ -95,7 +95,7 @@ tools:
   last_updated_by: Lelen91
   last_updated_on: 2019-09-17 21:09:23.000000000 Z
 - name: Contentful
-  description: 'Contentful is a cloud-based API-first content platform '
+  description: Contentful is a cloud-based API-first content platform
   website_url: https://www.contentful.com/
   open_source: false
   hosted_saas: true
